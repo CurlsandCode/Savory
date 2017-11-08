@@ -1,5 +1,5 @@
 class Recipe < ApplicationRecord
-	belongs_to :user , foreign_key :"user_id"
+	belongs_to :user
 	has_many :directions
 	has_many :recipe_ingredients
 	has_many :ingredients,through: :recipe_ingredients
