@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
 before_action :set_recipe ,only: [:show,:edit,:update,:destroy]
 	
 	def index
-		@recipe = Recipe.all
+		@recipes = Recipe.all
 	end
 	def show
 	end
@@ -12,7 +12,7 @@ before_action :set_recipe ,only: [:show,:edit,:update,:destroy]
 	def create
 		@recipe = current_user.recipes.build (recipe_params)
 		if @recipe.save
-		redirect_to @recipe , notice: "Successfully crated new recipe"
+		redirect_to @recipe , notice: "Successfully created new recipe"
 		else
 			render 'new'
 		end
