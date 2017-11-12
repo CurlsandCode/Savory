@@ -1,3 +1,4 @@
+<%= image_tag @recipe.image.url(:medium) %>
 <h1><%= @recipe.name %></h1>
 <p> <%= @recipe.description %></p>
 <button><%= link_to 'Back', recipes_path %></button>

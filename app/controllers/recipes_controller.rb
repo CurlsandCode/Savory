@@ -34,7 +34,7 @@ before_action :set_recipe ,only: [:show,:edit,:update,:destroy]
 		@recipe = Recipe.find(params[:id])
 	end
 	def recipe_params
-		params.require(:recipe).permit(:name, :description)
+		params.require(:recipe).permit(:name, :description, :image)
 	end
 	
 end
