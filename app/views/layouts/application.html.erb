@@ -9,10 +9,7 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
-       
-       	<header class="navbar navbar-default" role="navigation">
+   <header class="navbar navbar-default" role="navigation">
     <div class="navbar-inner">
       <div class="container">
         <div id="logo" class="navbar-brand"><%= link_to "Savory", root_path %></div>
@@ -33,6 +30,11 @@
       </div>
     </div>
   </header>
+   
+   <div id="main_content" class="container">
+		<% flash.each do |name, msg| %>
+   <%= content_tag( :div, msg, class: "alert alert-info") %>
+		<% end %>
     <%= yield %>
   </body>
 </html>
