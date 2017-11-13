@@ -1,7 +1,7 @@
 <h1>Recipes</h1>
-  <% @recipes.each do |r| %>
-  <%= image_tag r.image.url(:medium) %>
-  <h2> <%= r.name %></h2>
-  <p><%= r.description %></p>
+  <% @recipes.each do |recipe| %>
+  <%= image_tag recipe.image.url(:medium) %>
+  <h2> <%= link_to recipe.name, recipe %></h2>
+  <p><%= recipe.description %></p>
   
   <% end %>
