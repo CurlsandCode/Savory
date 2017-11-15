@@ -4,8 +4,9 @@
 <br>
 <strong>Ingredients:</strong>
  <% @recipe.recipe_ingredients.each do |ri| %>
-    <li><%= ri.quantity %> of <%= ri.ingredient.name %></li>
-  <% end %>
+<li><%= ri.quantity %> </li> 
+ <%end %> 
+  
   <br>
   <strong>Directions:</strong>
   <% @recipe.directions.each do |d| %>

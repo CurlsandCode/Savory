@@ -4,10 +4,11 @@ class Recipe < ApplicationRecord
 	has_many :recipe_ingredients
 	has_many :ingredients, through: :recipe_ingredients
 	
-	accepts_nested_attributes_for :recipe_ingredients,
-  	reject_if: proc { |attributes| attributes[:quantity].blank? && attributes [:ingredient_attributes][:name].blank? }
+	accepts_nested_attributes_for :recipe_ingredients, :reject_if => proc { |attributes| attributes[:quantity].blank? && attributes[:name].blank? }
+	
  	accepts_nested_attributes_for :directions,
   	reject_if: proc { |attributes| attributes[:step].blank? }
+	
 
     validates :name, :description, :image, presence: true
 	
