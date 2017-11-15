@@ -1,6 +1,17 @@
 <%= image_tag @recipe.image.url(:medium) %>
 <h1><%= @recipe.name %></h1>
 <p> <%= @recipe.description %></p>
+<br>
+<strong>Ingredients:</strong>
+ <% @recipe.recipe_ingredients.each do |ri| %>
+    <li><%= ri.quantity %> of <%= ri.ingredient.name %></li>
+  <% end %>
+  <br>
+  <strong>Directions:</strong>
+  <% @recipe.directions.each do |d| %>
+    <li><%= d.step %></li>
+  <% end %>
+  <br>
 <button><%= link_to 'Back', recipes_path %></button>
 <button><%= link_to 'Edit',  edit_recipe_path %></button>
 <button><%= link_to 'Delete', recipe_path, method: :delete, data:{confirm: "Are you sure?"} %></button>

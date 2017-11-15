@@ -8,7 +8,7 @@ before_action :set_recipe ,only: [:show,:edit,:update,:destroy]
 	end
 	def new
 		@recipe = Recipe.new
-		10.times {@recipe.recipe_ingredients.build.build_inngredient}
+		10.times {@recipe.recipe_ingredients.build.build_ingredient}
 		10.times  {@recipe.directions.build}
 	end
 	def create
