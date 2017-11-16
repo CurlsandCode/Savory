@@ -8,7 +8,7 @@ before_action :set_recipe ,only: [:show,:edit,:update,:destroy]
 	end
 	def new
 		@recipe = Recipe.new
-		5.times {@recipe.recipe_ingredients.build.build_ingredient}
+		5.times {@recipe.ingredients.build}
 		5.times  {@recipe.directions.build}
 	end
 	def create
@@ -35,8 +35,8 @@ before_action :set_recipe ,only: [:show,:edit,:update,:destroy]
 	def set_recipe
 		@recipe = Recipe.find(params[:id])
 	end
-	def recipe_params
-		params.require(:recipe).permit(:name, :description, :image, recipe_ingredients_attributes:[:quantity, ingredients_attributes:[:name]], directions_attributes:[:step])
-	end
-	
+
+	  def recipe_params
+    params.require(:recipe).permit(:name, :description, :image, :recipe_ingredients_attributes => [:id, :quantity, :_destroy], :ingredients_attributes => [:id, :name, :quantity, :_destroy], :directions_attributes => [:step])
+      end
 end

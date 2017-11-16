@@ -8,15 +8,15 @@
 <br>
 <h3>Ingredients</h3>
 
-    <%= f.fields_for :recipe_ingredients do |ri| %>
-      <%= ri.label :quantity %>
-      <%= ri.text_field :quantity %>
+    <%= f.fields_for :ingredients do |i| %>
+      <%= i.label :quantity %>
+      <%= i.text_field :quantity %>
 
-      <%= ri.fields_for :ingredient do |i| %>
+    
         <%= i.label :name %>
         <%= i.text_field :name %><br>
       <% end %>
-    <% end %>
+ 
     
      <h3>Directions</h3>
 

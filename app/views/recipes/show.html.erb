@@ -4,7 +4,7 @@
 <br>
 <strong>Ingredients:</strong>
  <% @recipe.recipe_ingredients.each do |ri| %>
-<li><%= ri.quantity %> </li> 
+<li><%= ri.quantity %> of <%= ri.ingredient.name %> </li> 
  <%end %> 
   
   <br>
