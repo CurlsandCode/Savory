@@ -20,14 +20,20 @@ before_action :set_recipe ,only: [:show,:edit,:update,:destroy]
 		end
 	end
 	def edit
+     5.times { @recipe.recipe_ingredients.build.build_ingredient}
+     5.times { @recipe.directions.build}
 	end
 	
 	def update
-        @recipe.update(recipe_params)
-	    redirect_to recipes_path (@recipe)
+         if @recipe.update(recipe_params)
+           redirect_to @recipe, notice: "Recipe successfully updated."
+         else
+          render :edit
+       end
 	end
 	def destroy
 		@recipe.destroy
+		redirect_to @recipe, notice: "Recipe successfully destroyed."
 	end
 	
 	private
