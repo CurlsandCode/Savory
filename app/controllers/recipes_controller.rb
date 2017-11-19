@@ -12,7 +12,7 @@ before_action :set_recipe ,only: [:show,:edit,:update,:destroy]
 		5.times  {@recipe.directions.build}
 	end
 	def create
-		@recipe = current_user.recipes.build (recipe_params)
+		@recipe = Recipe.create (recipe_params)
 		if @recipe.save
 		redirect_to @recipe , notice: "Successfully created new recipe"
 		else
@@ -35,8 +35,19 @@ before_action :set_recipe ,only: [:show,:edit,:update,:destroy]
 	def set_recipe
 		@recipe = Recipe.find(params[:id])
 	end
-
-	  def recipe_params
-    params.require(:recipe).permit(:name, :description, :image, :ingredients_attributes => [ :name, :quantity], :directions_attributes => [:step])
+	 def recipe_params
+    params.require(:recipe).permit(
+      :name,
+      :description,
+      :image,
+      :user_id,
+      directions_attributes: [:id, :step],
+      recipe_ingredients_attributes: [
+        :id,
+        :quantity,
+        :recipe_id,
+        :ingredient_id,
+        ingredient_attributes: [:id, :name]])
       end
+	
 end

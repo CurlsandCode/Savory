@@ -1,29 +1,42 @@
 <h2> New Recipe </h2>
 <%= form_for @recipe do |f| %>
-<label> Name:</label> <br>
-<%= f.text_field :name %> <br>
-<label> Description:</label><br>
-<%= f.text_area :description %> <br>
-<%= f.file_field :image %>
-<br>
+
+
+  <div class="field">
+    <%= f.label :name, "Recipe Name" %>
+    <%= f.text_field :name %>
+  </div>
+
+<div class= "field">
+   <%= f.label :description, "Description" %>
+    <%= f.text_area :description %>
+</div>
+ <%= f.file_field :image %> <br>
 <h3>Ingredients</h3>
-
-    <%= f.fields_for :ingredients do |i| %>
-      <%= i.label :quantity %>
-      <%= i.text_field :quantity %>
-
-    
-        <%= i.label :name %>
-        <%= i.text_field :name %><br>
-      <% end %>
- 
-    
-     <h3>Directions</h3>
-
-    <%= f.fields_for :directions do |d| %>
-      <%= d.label :step %>
-      <%= d.text_field :step %>
+  <%= f.fields_for(:recipe_ingredients) do |ri| %>
+    <%= ri.fields_for(:ingredient) do |ingredient| %>
+      <span class="ingredient">
+        <%= ingredient.label :name, "Name" %>
+        <%= ingredient.text_field :name %>
+      </span>
     <% end %>
-    <br>
-<%= f.submit %>
+  <span class="quantity">
+    <%= ri.label :quantity, "Quantity" %>
+    <%= ri.text_field :quantity %>
+  </span>
+      <br>
+  <% end %>
+  <h3>Directions</h3>
+  <%= f.fields_for(:directions) do |direction| %>
+    <div class="direction">
+      <%= direction.label :step, "Step:" %>
+      <%= direction.text_field :step %>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field(:user_id, value: current_user.id) %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>
