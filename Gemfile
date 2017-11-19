@@ -16,7 +16,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise', '~> 4.2'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'paperclip', '~> 5.1'
-gem 'aws-sdk'
+gem 'aws-sdk', '~> 2.3'
 gem 'envyable'
 
 group :development, :test do
