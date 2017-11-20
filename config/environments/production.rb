@@ -98,7 +98,7 @@ Rails.application.configure do
     secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
     s3_region: ENV.fetch('AWS_REGION'),
       },
-    :url =>':savory-site.s3.amazonaws.com',
-    :path => '/:class/:attachment/:id_partition/:style/:filename',
+    :s3_host_name =>'savory-site.s3.amazonaws.com'
+    
     } 
 end
