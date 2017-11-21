@@ -7,9 +7,13 @@ before_action :set_recipe ,only: [:show,:edit,:update,:destroy]
 	def show
 	end
 	def new
+		if user_signed_in?
 		@recipe = Recipe.new
 		5.times {@recipe.recipe_ingredients.build.build_ingredient}
 		5.times  {@recipe.directions.build}
+		else 
+			redirect_to  new_user_session_path
+	  end
 	end
 	def create
 		@recipe = Recipe.create (recipe_params)

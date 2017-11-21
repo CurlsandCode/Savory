@@ -13,6 +13,14 @@
     <li><%= d.step %></li>
   <% end %>
   <br>
-<button><%= link_to 'Back', recipes_path %></button>
-<button><%= link_to 'Edit',  edit_recipe_path %></button>
-<button><%= link_to 'Delete', recipe_path, method: :delete, data:{confirm: "Are you sure?"} %></button>
+ <button type="button" class="btn btn-default">
+    <%= link_to 'Back', recipes_path %>
+</button>
+<% if @recipe.user == current_user %>
+    <button type="button" class="btn btn-default">
+    <%= link_to 'Edit',  edit_recipe_path %>
+    </button>
+     <button type="button" class="btn btn-default">
+    <%= link_to 'Delete', recipe_path, method: :delete, data:{confirm: "Are you sure?"} %>
+  </button>
+<% end %>
