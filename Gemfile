@@ -17,7 +17,7 @@ gem 'devise', '~> 4.2'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'paperclip', '~> 5.1'
 gem 'aws-sdk', '~> 2.3'
-gem 'envyable'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
