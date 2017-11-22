@@ -1,7 +1,7 @@
 <%= image_tag @recipe.image.url(:medium) %>
 <h1><%= @recipe.name %></h1>
 <p> <%= @recipe.description %></p>
-<strong>Created by: Chef <%= @recipe.user.username %></strong>
+<strong>Created by: Chef <%= link_to @recipe.user.username, user_recipes_path(@recipe.user) %></strong>
 <br>
 <strong>Ingredients:</strong>
  <% @recipe.recipe_ingredients.each do |ri| %>
@@ -11,7 +11,9 @@
   <br>
   <strong>Directions:</strong>
   <% @recipe.directions.each do |d| %>
+   
     <li><%= d.step %></li>
+
   <% end %>
   <br>
  <button type="button" class="btn btn-default">
