@@ -2,7 +2,11 @@ class RecipesController < ApplicationController
 before_action :set_recipe ,only: [:show,:edit,:update,:destroy]
 	
 	def index
-		@recipes = Recipe.all.order("created_at DESC")
+		if params[:user_id]
+		 @recipes = User.find(params[:user_id]).recipes
+		else
+		 @recipes = Recipe.all.order("created_at DESC")
+		end
 	end
 	def show
 	end
