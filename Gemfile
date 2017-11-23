@@ -18,6 +18,7 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'paperclip', '~> 5.1'
 gem 'aws-sdk', '~> 2.3'
 gem 'jquery-rails'
+gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
 
