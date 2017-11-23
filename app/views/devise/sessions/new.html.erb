@@ -3,11 +3,11 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
  
    <div class="field">
-    <%= f.label :username %>
+    <%= f.label :username %> <br />
     <%= f.text_field :username, :autofocus => true %>
   </div>
    <div class="field">
-    <%= f.label :email %>
+    <%= f.label :email %> <br />
     <%= f.text_field :email, :autofocus => true %>
   </div>
   <div class="field">
@@ -26,5 +26,7 @@
     <%= f.submit "Log in" %>
   </div>
 <% end %>
+<br />
+<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="true" data-auto-logout-link="true" data-use-continue-as="false"></div>
 
-<%= render "devise/shared/links" %>
+<%-# render "devise/shared/links" %>

@@ -4,7 +4,7 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :username %>
+    <%= f.label :username %>  <br />
     <%= f.text_field :username, :autofocus => true %>
   </div>
 
@@ -14,7 +14,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :password %>  <br />
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
@@ -25,10 +25,12 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
-
+   <br />
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
+  <br />
+<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="true" data-auto-logout-link="true" data-use-continue-as="false"></div>
 
-<%= render "devise/shared/links" %>
+<%-# render "devise/shared/links" %>
