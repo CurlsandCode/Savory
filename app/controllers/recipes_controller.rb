@@ -5,8 +5,9 @@ before_action :set_recipe ,only: [:show,:edit,:update,:destroy]
 		if params[:user_id]
 		 @recipes = User.find(params[:user_id]).recipes
 		else
-		 @recipes = Recipe.all.order("created_at DESC")
+		 @recipes = Recipe.all
 		end
+		@recent_recipes = Recipe.recently_added_recipes
 	end
 	def show
 	end
