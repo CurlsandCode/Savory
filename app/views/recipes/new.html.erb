@@ -8,9 +8,10 @@
   </div>
 
 <div class= "field">
-   <%= f.label :description, "Description" %>
+   <%= f.label :description, "Description" %> <br />
     <%= f.text_area :description %>
 </div>
+ <%= f.label :image, "Image" %>
  <%= f.file_field :image %> <br>
 <h3>Ingredients</h3>
   <%= f.fields_for(:recipe_ingredients) do |ri| %>
@@ -30,7 +31,7 @@
   <%= f.fields_for(:directions) do |direction| %>
     <div class="direction">
       <%= direction.label :step, "Step:" %>
-      <%= direction.text_field :step %>
+      <%= direction.text_area :step %>
     </div>
   <% end %>
 
