@@ -46,8 +46,10 @@
 		<%= direction.text_field :step %>
 	</div>
 	<% end %>
+	
 	<br />
-		<%= f.hidden_field(:user_id, value: current_user.id) %>
+	
+	<%= f.hidden_field(:user_id, value: current_user.id) %>
 
 	<div class="actions">
 		<%= f.submit %>

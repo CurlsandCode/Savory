@@ -11,7 +11,7 @@
           </div>
         </div>
       </div>
-      <% end %>
+   <% end %>
      
     <br />
     
@@ -25,12 +25,11 @@
             <%= link_to recipe do %>
               <%= image_tag recipe.image.url(:medium), class: "img-responsive" %>
             <% end %>
-          </div>
-          <h2>
-            <%= link_to recipe.name, recipe %>
-          </h2>
-            <p><%= recipe.description %>
-            </p>
+          	</div>
+          	<h2>
+            	<%= link_to recipe.name, recipe %>
+          	</h2>
+            	<p><%= recipe.description %></p>
         </div>
       </div>
     <% end %>
