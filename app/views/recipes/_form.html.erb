@@ -1,40 +1,55 @@
-<%= form_for @recipe do |f| %>
+	<%= form_for @recipe do |f| %>
+	
+	<% if recipe.errors.any? %>
+		<div id="error_explanation">
+			<h4><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h4>
+				<ul>
+					<% recipe.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+					<% end %>
+				</ul>
+			</div>
+	<% end %>
 
+	<div class="field">
+		<%= f.label :name, "Recipe Name" %>
+		<%= f.text_field :name %>
+	</div>
+	
+	<div class= "field">
+		<%= f.label :description, "Description" %>
+		<%= f.text_area :description %>
+	</div>
+	
+	<%= f.file_field :image %> <br>
+	
+	<h3>Ingredients</h3>
+		<%= f.fields_for(:recipe_ingredients) do |ri| %>
+		<%= ri.fields_for(:ingredient) do |ingredient| %>
+	<span class="ingredient">
+		<%= ingredient.label :name, "Name" %>
+		<%= ingredient.text_field :name %>
+	</span>
+	<% end %>
+	
+	<span class="quantity">
+		<%= ri.label :quantity, "Quantity" %>
+		<%= ri.text_field :quantity %>
+	</span>
+	<br>
+	<% end %>
+	
+	<h3>Directions</h3>
+		<%= f.fields_for(:directions) do |direction| %>
+	<div class="direction">
+		<%= direction.label :step, "Step:" %>
+		<%= direction.text_field :step %>
+	</div>
+	<% end %>
+	<br />
+		<%= f.hidden_field(:user_id, value: current_user.id) %>
 
-<div class="field">
-<%= f.label :name, "Recipe Name" %>
-<%= f.text_field :name %>
-</div>
-<div class= "field">
-<%= f.label :description, "Description" %>
-<%= f.text_area :description %>
-</div>
-<%= f.file_field :image %> <br>
-<h3>Ingredients</h3>
-<%= f.fields_for(:recipe_ingredients) do |ri| %>
-<%= ri.fields_for(:ingredient) do |ingredient| %>
-<span class="ingredient">
-<%= ingredient.label :name, "Name" %>
-<%= ingredient.text_field :name %>
-</span>
-<% end %>
-<span class="quantity">
-<%= ri.label :quantity, "Quantity" %>
-<%= ri.text_field :quantity %>
-</span>
-<br>
-<% end %>
-<h3>Directions</h3>
-<%= f.fields_for(:directions) do |direction| %>
-<div class="direction">
-<%= direction.label :step, "Step:" %>
-<%= direction.text_field :step %>
-</div>
-<% end %>
-<br />
-<%= f.hidden_field(:user_id, value: current_user.id) %>
-
-<div class="actions">
-<%= f.submit %>
-</div>
-<% end %>
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+	<% end %>
