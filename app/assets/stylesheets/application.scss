@@ -36,3 +36,26 @@ video {
   z-index: -100;
   transform: translate(-50%, -50%);
 }
+
+.main .content {
+  position: absolute;
+  top: 200px;
+  width: 100%;
+  text-align: center;
+  color:#fff;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.main h1 + h4 {
+  font-size: 50px;
+  text-shadow: 0 2px 3px rgba(0,0,0,.4);
+  color:#fff;
+  margin-top:0px;
+  margin-bottom:50px;
+  padding: 0 40px;
+}
+h4 {
+	font-size: 25px;
+}
