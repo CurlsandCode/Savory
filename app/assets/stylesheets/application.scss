@@ -48,7 +48,7 @@ video {
   margin: 0 auto;
 }
 
-.main h1 + h4 {
+.main h1  {
   font-size: 50px;
   text-shadow: 0 2px 3px rgba(0,0,0,.4);
   color:#fff;
@@ -56,13 +56,15 @@ video {
   margin-bottom:50px;
   padding: 0 40px;
 }
-h4 {
-	font-size: 25px;
+h2 {
+	font-size: 35px;
+	text-shadow: 0 2px 3px rgba(0,0,0,.4);
+  color:#fff;
 }
 	
 	@media screen and (max-device-width: 800px) {
     html {
-         background: url(beef.jpg)  no-repeat center center fixed;
+         background: url(recipe.jpg)  no-repeat center center fixed;
 			   background-size: cover;
     }
     video {
