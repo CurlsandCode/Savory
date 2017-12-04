@@ -13,12 +13,12 @@ class Recipe < ApplicationRecord
 	has_attached_file :image, styles: { :medium => "400x400#"}
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 			
-	def self.recently_added_recipes
-	  Recipe.last(4).reverse
+	
+  	def self.recently_added_recipes
+	  	Recipe.last(4).reverse
+		end
+		
+		scope :by_alphabet, -> {order(:name)}
 	end
-		
-		
-
- end
 
 
