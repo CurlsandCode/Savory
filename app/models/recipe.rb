@@ -1,4 +1,5 @@
 class Recipe < ApplicationRecord
+	acts_as_votable
 	belongs_to :user
 	has_many :directions
 	has_many :recipe_ingredients

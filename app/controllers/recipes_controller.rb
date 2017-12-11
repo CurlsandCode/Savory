@@ -25,7 +25,7 @@ class RecipesController < ApplicationController
 		def create
 			@recipe = Recipe.create (recipe_params)
 			if @recipe.save
-				redirect_to user_recipe_path(@recipe.user, @recipe) , notice: "Successfully created new recipe"
+				redirect_to recipe_path(@recipe) , notice: "Successfully created new recipe"
 			else
 				5.times {@recipe.recipe_ingredients.build.build_ingredient}
 		    5.times  {@recipe.directions.build}
@@ -50,6 +50,19 @@ class RecipesController < ApplicationController
 			@recipe.destroy
 			redirect_to @recipe, notice: "Recipe successfully destroyed."
 		end
+	  
+	  def upvote
+			@recipe = Recipe.find(params[:id])
+			@recipe.upvote_by current_user
+			redirect_back fallback_location: root_path
+		end
+	
+	 def downvote
+			@recipe = Recipe.find(params[:id])
+			@recipe.downvote_by current_user
+			redirect_back fallback_location: root_path
+		end
+	
 	
 		private
 	
