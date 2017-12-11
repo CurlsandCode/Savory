@@ -23,7 +23,7 @@
            <% if user_signed_in? %>
 		     <ul class="nav navbar-nav navbar-right">
 			  <li><%= link_to 'Recipes', recipes_path %></li>
-			  <li><%= link_to 'Add a new recipe', new_recipe_path %></li>
+			  <li><%= link_to 'Add a new recipe', new_user_recipe_path(current_user) %></li>
 			  <li><%= link_to 'Account', edit_user_registration_path %></li>
 			  <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
 			</ul>
