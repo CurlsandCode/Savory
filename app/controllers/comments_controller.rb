@@ -1,10 +1,15 @@
 class CommentsController < ApplicationController
 		before_action :set_comment 
 		
+	def new
+		super
+	end
+		
 
 		def create
-			@comment = @current_user.comment.create (comment_params)
-			@comment.recipe = @recipe
+			@recipe = Recipe.find(params[:recipe_id])
+			@comment = @recipe.comments.new (comment_params)
+			@comment.user = current_user
 			if @comment.save
 				redirect_to recipe_path(@recipe) , notice: "Successfully created new comment"
 			else
@@ -16,11 +21,11 @@ class CommentsController < ApplicationController
 		private
 	
 		def set_comment
-			@recipe = Recipe.find(params[:id])
+			@comment = Comment.find(params[:id])
 		end
 		
 	 	def comment_params
-    	params.require(:comment).permit(:body)
+    	params.require(:comment).permit(:recipe_id, :body, :user_id)
 		end
 	
 end
