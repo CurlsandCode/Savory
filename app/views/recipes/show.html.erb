@@ -41,23 +41,21 @@
 <% end %>
 <br />
 <div class="row">
-  <div class="white-well">
+     <div class="white-well">
     <h3><%= @recipe.comments.count %> Comment(s)</h3>
-    <% if !@recipe.comments.empty? %>
       <% @recipe.comments.each do |comment| %>
-      
-        	<p><%= comment.body %></p>
-			    <p><small>Submitted <strong><%= comment.created_at %> ago</strong> by
-         <% if comment.user.nil? %>
-           Anonymous
-         <% else %>
+      <div class="pull-left" id="comment-<%= comment.id %>">
+       <%= comment.body %>
+			   Submitted <strong><%= time_ago_in_words(comment.created_at) %> ago</strong> by
           <%= comment.user.username %>
-          </small></p>
-             <% end %>
-        <% end %>
-    <% end %>
-    <%= form_for(@comment) do |f| %>
-      <% if @comment.errors.any? %>
+      </div>
+      <% end %>
+    </div>
+<% if current_user %>
+     <br />
+      <h4>Add a comment:</h4>
+        <%= form_for @comment, url: recipe_comments_path(@recipe, @comment)  do |f| %>
+          <% if @comment.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
 
@@ -68,15 +66,10 @@
           </ul>
         </div>
       <% end %>
-      <% if user_signed_in? %>
-      <div class="form-group">
-        <%= f.hidden_field :user_id %>
-        <%= f.hidden_field :recipe_id %>
-        <h4><%= f.label :Comment %></h4>
-        <%= f.text_area :body, class: 'form-control', required: true %>
-      </div>
-     
-      <%= f.submit "Add Comment", class: 'btn btn-primary' %>
+           <%= f.text_area :body, class: 'commentBox form-control' %> <br />
+           <%= f.submit "Comment", class: "btn btn-primary" %> 
+        <% end %><br>
+    <% else %>
+      <p>Please log in order to add a comment.</p>
     <% end %>
-    <% end %>
-
+    
