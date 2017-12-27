@@ -6,13 +6,23 @@ class RecipesController < ApplicationController
 				@recent_recipes = Recipe.recently_added_recipes
 			if params[:user_id]
 				@recipes = User.find(params[:user_id]).recipes
-			end
-	 	end
-		
+			 end
+	 	 end
+		   respond_to do |format|
+			 format.html {render :show}
+			 format.json {render json: @recipe}
+			 end
+     
+
 		def show
 			  @recipe = Recipe.find(params[:id])
 			  @comment = current_user.comments.build(recipe: @recipe)
-		end
+		   end
+	     respond_to do |format|
+			 format.html {render :show}
+			 format.json {render json: @recipe}
+			 end
+     
 		
 		def new
 			if user_signed_in?
