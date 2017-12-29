@@ -16,7 +16,7 @@
           	<h2>
             	<%= link_to recipe.name, recipe %>
           	</h2>
-            	<p><%= truncate recipe.description %></p>
+            	<p id="body-<%= recipe.id %>"><%= truncate recipe.description %></p>
             	<button class="js-more" data-id="<%= recipe.id %>">Read More</button>  
         </div>
       </div>
