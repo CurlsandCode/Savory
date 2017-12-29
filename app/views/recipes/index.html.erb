@@ -1,18 +1,5 @@
 <h1>Latest Recipes</h1>
-    <% @recent_recipes.each do |recipe| %>
-      <div class="col-md-3 col-sm-6 hero-feature">
-        <div class="recipe">
-         <%= link_to recipe do %>
-          <%= image_tag recipe.image.url(:medium), class: "img-responsive" %>
-           <% end %>
-          <div class="caption">
-            <h2><%= link_to recipe.name, recipe %></h2>
-            <p><%= recipe.description %>.</p>
-          </div>
-        </div>
-      </div>
-   <% end %>
-     
+  <%= render "latest_recipes", recipe: @recipe %>
     <br />
     
 <h1 id="allrecipes">Recipes</h1>
