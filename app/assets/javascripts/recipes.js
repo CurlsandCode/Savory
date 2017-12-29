@@ -1,4 +1,4 @@
-$(document).ready(function (){
+$(function () {
   $(".js-more").on('click', function(event) {
 		event.preventDefault();
     var id = $(this).data("id");
@@ -7,5 +7,3 @@ $(document).ready(function (){
     });
   });
 });
-
-
