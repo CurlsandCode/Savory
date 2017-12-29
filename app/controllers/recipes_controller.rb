@@ -16,12 +16,14 @@ class RecipesController < ApplicationController
 
 		def show
 			  @recipe = Recipe.find(params[:id])
+			  if current_user
 			  @comment = current_user.comments.build(recipe: @recipe)
 		   end
 	     respond_to do |format|
 			 format.html {render :show}
 			 format.json {render json: @recipe}
 			 end
+		end
      
 		
 		def new
