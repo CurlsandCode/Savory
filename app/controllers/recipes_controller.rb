@@ -2,16 +2,16 @@ class RecipesController < ApplicationController
 		before_action :set_recipe ,only: [:show,:edit,:update,:destroy]
 		
 		def index
-				@recipes = Recipe.all.by_alphabet
 				@recent_recipes = Recipe.recently_added_recipes
-			if params[:user_id]
+			 if params[:user_id]
 				@recipes = User.find(params[:user_id]).recipes
 			 end
-	 	 end
+	 	   @recipes = Recipe.all.by_alphabet
 		   respond_to do |format|
 			 format.html {render :index}
-			 format.json {render json: @recipe}
+			 format.json {render json: @recipes}
 			 end
+		end
      
 
 		def show
