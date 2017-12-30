@@ -1,7 +1,7 @@
-<%= image_tag @recipe.image.url(:medium), class: "img-responsive" %>
-<h1><%= @recipe.name %></h1>
-<p> <%= @recipe.description %></p>
-<strong>Created by: Chef <%= link_to @recipe.user.username, user_recipes_path(@recipe.user) %></strong>
+<%= image_tag @recipe.image.url(:medium), class: "img-responsive recipeImage" %>
+<h1 class="recipeName"><%= @recipe.name %></h1>
+<p class="recipeDescription"> <%= @recipe.description %></p>
+<div class="chefName"><strong>Created by: Chef <%= link_to @recipe.user.username, user_recipes_path(@recipe.user) %></strong></div>
 <div class="btn-group pull-right">
   <%= link_to like_recipe_path(@recipe), method: :put, class: "btn btn-default" do %>
     <span class="glyphicon glyphicon-chevron-up"></span>
@@ -17,28 +17,29 @@
 <br>
 <strong>Ingredients:</strong>
  <% @recipe.recipe_ingredients.each do |ri| %>
-<li><%= ri.quantity %> of <%= ri.ingredient.name %> </li> 
+<li class="recipeIngredients"><%= ri.quantity %> of <%= ri.ingredient.name %> </li> 
  <%end %> 
   
   <br>
   <strong>Directions:</strong>
   <% @recipe.directions.each do |d| %>
    
-    <li><%= d.step %></li>
+    <li class="recipeSteps"><%= d.step %></li>
 
   <% end %>
   <br>
  <button type="button" class="btn btn-default">
     <%= link_to 'Back', recipes_path %>
-</button>
+ </button>
 <% if @recipe.user == current_user %>
     <button type="button" class="btn btn-default">
     <%= link_to 'Edit',  edit_recipe_path %>
     </button>
      <button type="button" class="btn btn-default">
     <%= link_to 'Delete', recipe_path, method: :delete, data:{confirm: "Are you sure?"} %>
-  </button>
+     </button>
 <% end %>
+   <button class="js-next btn btn-default" data-id="<%= @recipe.id %>">Next Recipe</button> 
 <br />
 <div class="row">
      <div class="white-well">
