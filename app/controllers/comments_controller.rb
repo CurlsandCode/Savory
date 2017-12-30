@@ -4,8 +4,11 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.create(comment_params)
     @comment.recipe = @recipe
-    @comment.save
-    redirect_to recipe_path(@recipe) , notice: "Successfully created new comment"
+    if @comment.save
+    render json: @comment,status: 201
+		else 
+			render json: {errors: @comment.errors.full_messages}, status: 400
+		end
   end
 
 
