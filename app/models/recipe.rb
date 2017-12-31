@@ -20,6 +20,15 @@ class Recipe < ApplicationRecord
 		end
 		
 		scope :by_alphabet, -> {order(:name)}
+		
+		def next
+			 if next_recipe = self.class.where("id > ?", id).first
+      next_recipe
+      else
+     Recipe.first
+    end
+  end
+		
 	end
 
 
