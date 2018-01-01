@@ -1,10 +1,10 @@
 $(function () {
   $(".js-more").on('click', function(event) {
-		event.preventDefault();
-    var id = $(this).data("id");
-    $.get("/recipes/" + id + ".json", function(data) {
-      $("#description-" + id).text(data["description"]);
+    var recipeId = $(this).attr("data-id");
+    $.get("/recipes/" + recipeId + ".json", function(recipe) {
+      $("#description-" + recipeId).html(recipe.description);
     });
+	 event.preventDefault();
   });
 });
 
