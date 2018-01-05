@@ -41,17 +41,39 @@
 <% end %>
    <button class="js-next btn btn-default" data-id="<%= @recipe.id %>">Next Recipe</button> 
 <br />
-<div class="row">
-     <div class="white-well">
-    <h3><%= @recipe.comments.count %> Comment(s)</h3>
-      <% @recipe.comments.each do |comment| %>
-      <div class="pull-left" id="comment-<%= comment.id %>">
-       <%= comment.body %>
-			   Submitted <strong><%= time_ago_in_words(comment.created_at) %> ago</strong> by
-          <%= comment.user.username %>
-      </div>
-      <% end %>
-    </div>
+   
+             <h3 class="text-success"><%= @recipe.comments.count %> Comment(s)</h3>
+                <hr/>      
+               <% @recipe.comments.each do |comment| %>
+      
+              <div class="comments-list"  >
+  <div class="container bootstrap snippet">
+    <div class="row">
+		<div class="col-md-12">
+		    <div class="blog-comment">
+		    <ul class="comments">
+				<li class="clearfix">
+				  <div class="post-comments">
+				      <p class="meta"><small><%= time_ago_in_words(comment.created_at) %> ago</small> <%= comment.user.username %> said :</p>
+				      <p>
+				        <%= comment.body %>
+				      </p>
+				        
+				      <%= link_to 'Delete Comment',recipe_comment_path(@recipe, comment), method: :delete,
+              data: { confirm: 'Are you sure?' }, class:'btn btn-danger pull-right' %> 
+				      <hr/>
+				    </div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<% end %>  
+   
+   
+    
+    
 <% if current_user %>
      <br />
       <h4>Add a comment:</h4>

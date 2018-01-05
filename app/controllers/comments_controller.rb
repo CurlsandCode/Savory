@@ -17,6 +17,7 @@ class CommentsController < ApplicationController
 
 
   def destroy
+    @comment = @recipe.comments.find(params[:id])
     @comment.destroy
     respond_to do |format|
       format.html { redirect_back fallback_location: root_path, notice: 'Comment was successfully destroyed.' }
