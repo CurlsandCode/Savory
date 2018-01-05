@@ -42,7 +42,7 @@
    <button class="js-next btn btn-default" data-id="<%= @recipe.id %>">Next Recipe</button> 
 <br />
    
-             <h3 class="text-success"><%= @recipe.comments.count %> Comment(s)</h3>
+             <h3 class="text-primary"><%= @recipe.comments.count %> Comment(s)</h3>
                 <hr/>      
                <% @recipe.comments.each do |comment| %>
       
@@ -50,10 +50,10 @@
   <div class="container bootstrap snippet">
     <div class="row">
 		<div class="col-md-12">
-		    <div class="blog-comment">
+		    <div class="recipe-comment">
 		    <ul class="comments">
 				<li class="clearfix">
-				  <div class="post-comments">
+				  <div class="recipe-comments">
 				      <p class="meta"><small><%= time_ago_in_words(comment.created_at) %> ago</small> <%= comment.user.username %> said :</p>
 				      <p>
 				        <%= comment.body %>
