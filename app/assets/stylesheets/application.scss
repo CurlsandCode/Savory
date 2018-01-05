@@ -17,12 +17,25 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body{
+      background: image-url("chefhat.jpg") no-repeat fixed; 
+			   background-size: cover;
+}
 #allrecipes {
 	color:cornflowerblue;
 	padding-top: 35%;
 	padding-bottom: 5%;
 	text-align: center;
+}
 	
+
+
+.card hr{
+	color: #fff;
+	width: 50%;
+}
+ .card-text, .js-more {
+	color:#fff;
 }
 
 video {
@@ -46,6 +59,8 @@ video {
   left: 0;
   right: 0;
   margin: 0 auto;
+	padding: 0 0 50px 0;
+
 }
 
 .main h1  {
@@ -75,9 +90,7 @@ h2 {
         display: none;
     }
 }
-body{
-    background:#fff;
-}
+
 
 hr {
     margin-top: 20px;

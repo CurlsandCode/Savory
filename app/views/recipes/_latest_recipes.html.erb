@@ -1,12 +1,14 @@
   <% @recent_recipes.each do |recipe| %>
       <div class="col-md-3 col-sm-6 hero-feature">
-        <div class="recipe">
+        <div class="thumbnail">
+        <div class="card card-inverse text-center" style="background-color: #2E2E2E; border-color: #333;">
          <%= link_to recipe do %>
-          <%= image_tag recipe.image.url(:medium), class: "img-responsive" %>
+          <%= image_tag recipe.image.url(:medium), class: "img-responsive card-img-top" %>
            <% end %>
-          <div class="caption">
-            <h2><%= link_to recipe.name, recipe %></h2>
+          <div class="card-block">
+            <h2 class="card-title"><%= link_to recipe.name, recipe %></h2>
           </div>
         </div>
+      </div>
       </div>
    <% end %>
