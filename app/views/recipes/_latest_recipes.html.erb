@@ -1,14 +1,13 @@
-  <% @recent_recipes.each do |recipe| %>
-      <div class="col-md-3 col-sm-6 hero-feature">
-        <div class="thumbnail">
-        <div class="card card-inverse text-center" style="background-color: #2E2E2E; border-color: #333;">
-         <%= link_to recipe do %>
-          <%= image_tag recipe.image.url(:medium), class: "img-responsive card-img-top" %>
-           <% end %>
-          <div class="card-block">
-            <h2 class="card-title"><%= link_to recipe.name, recipe %></h2>
-          </div>
+ <% @recent_recipes.each do |recipe| %>
+    <div class="col-md-3 col-sm-6 hero-feature">
+      <div data-aos="zoom-out">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= recipe.image if recipe.image.present? %>');">
+         <div class="card-description">
+					 <h2><%= recipe.name %></h2>
+         </div>
+        <%= link_to '', recipe_path(recipe), class: "card-link" %>
         </div>
       </div>
-      </div>
-   <% end %>
+  </div>
+  <% end %>
+
