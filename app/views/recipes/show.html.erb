@@ -1,32 +1,43 @@
-<%= image_tag @recipe.image.url(:medium), class: "img-responsive recipeImage" %>
-<h1 class="recipeName"><%= @recipe.name %></h1>
-<p class="recipeDescription"> <%= @recipe.description %></p>
-<div class="chefName"><strong>Created by: Chef <%= link_to @recipe.user.username, user_recipes_path(@recipe.user) %></strong></div>
-<div class="btn-group pull-right">
-  <%= link_to like_recipe_path(@recipe), method: :put, class: "btn btn-default" do %>
-    <span class="glyphicon glyphicon-chevron-up"></span>
-    Upvote
-    <%= @recipe.get_upvotes.size %>
-  <% end %>
-  <%= link_to dislike_recipe_path(@recipe), method: :put, class: "btn btn-default" do %>
-	<span class="glyphicon glyphicon-chevron-down"></span>
-    Downvote
-    <%= @recipe.get_downvotes.size %>
-  <% end %>
-</div>
-<br>
-<strong>Ingredients:</strong>
- <% @recipe.recipe_ingredients.each do |ri| %>
-<li class="recipeIngredients"><%= ri.quantity %> of <%= ri.ingredient.name %> </li> 
- <%end %> 
-  
-  <br>
-  <strong>Directions:</strong>
-  <% @recipe.directions.each do |d| %>
-   
-    <li class="recipeSteps"><%= d.step %></li>
 
-  <% end %>
+
+<div class="banner recipe-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+url('<%=  @recipe.image.url %>')">
+<div class="banner-content">
+  <h1><%= @recipe.name %></h1>
+</div>
+</div>
+
+<div class="container">
+  <div class="row">
+
+    <div class="details-recipe">
+      <div class="col-xs-4">
+        <h4>Descritpion</h4>
+        <p><%= @recipe.description %></p>
+      </div>
+
+      <div class="col-xs-4">
+        <h4>Ingredients</h4>
+         <% @recipe.recipe_ingredients.each do |ri| %>
+          <ul>
+          <li class="recipeIngredients"><%= ri.quantity %> of <%= ri.ingredient.name %> </li> 
+          </ul>
+        <%end %> 
+      </div>
+      
+  
+      <div class="col-xs-4">
+        <h4>Directions:</h4>
+        <% @recipe.directions.each do |d| %>
+          <ul>
+         <li class="recipeSteps"><%= d.step %></li>
+         <% end %>
+         </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
   <br>
  <button type="button" class="btn btn-default">
     <%= link_to 'Back', recipes_path %>
@@ -96,3 +107,4 @@
       <p>Please log in order to add a comment.</p>
     <% end %>
     
+   
