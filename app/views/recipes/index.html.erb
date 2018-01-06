@@ -12,19 +12,19 @@
   <%= render "latest_recipes", recipe: @recipe %>
     <br />
 <div class="container">
-  <h2 class="text-center title">Your Library of Recipes</h2>
+  <h2 class="text-center title">Our Library of Recipes</h2>
   <div class="row">
     <% @recipes.each do |recipe| %>
     <div class="col-xs-12 col-sm-4">
-      <div data-aos="zoom-out">
+      <div data-aos="flip-left"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="2000">
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= recipe.image if recipe.image.present? %>');">
-         <div class="card-description">
-          <h2><%= recipe.name %></h2>
-          <p>
-            <%= recipe.description %>
-          </p>
          
-        </div>
+          <div class="card-description">
+            <h2><%= recipe.name %></h2>
+             <p> <%= recipe.description %> </p>
+          </div>
         <%= link_to '', recipe_path(recipe), class: "card-link" %>
         </div>
       </div>

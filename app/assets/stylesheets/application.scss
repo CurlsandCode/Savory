@@ -17,24 +17,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-/*body{
-      background: image-url("chefhat.jpg") no-repeat fixed; 
-			   background-size: cover;
-}*/
+
 
 .navbar-brand img {
   height: 50px;
 	padding-bottom: 15px;
 }
-.navbar-brand {
-	color: white;
-}
-#allrecipes {
-	color:cornflowerblue;
-	padding-top: 35%;
-	padding-bottom: 5%;
-	text-align: center;
-}
+
+
 	ul {
   list-style-type: none;
   margin-left: -40px;
@@ -80,28 +70,6 @@ rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), asset-url('banner.jpg');
 }
 
 
-	
-	@media screen and (max-device-width: 800px) {
-    html {
-         background: image-url("food.jpg") no-repeat fixed; 
-			   background-size: cover;
-			  
-			   margin-top: 0;
-    }
-		.navbar {margin-bottom: 0;
-		}
-    video {
-        display: none;
-    }
-}
-
-
-hr {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border: 0;
-    border-top: 1px solid #eee;
-}
 a {
     
     text-decoration: none;
@@ -172,7 +140,7 @@ a {
 	line-height: 30px;
 	font-weight: 800;
 }
-             .card {
+  .card {
   height: 300px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
@@ -184,20 +152,7 @@ a {
   box-shadow: 1px 1px 1px rgba(200,200,200,0.8);
   text-shadow: 1px 1px 1px rgba(0,0,0,0.7);
 }
-.card-user {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  width: 40px;
-  border-radius: 50%;
-}
-.card-category {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 15px;
-  text-transform: uppercase;
-}
+
 .card-description {
   position: absolute;
   bottom: 10px;

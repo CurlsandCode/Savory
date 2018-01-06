@@ -25,7 +25,7 @@ gem 'acts_as_votable', '~> 0.10.0'
 gem 'active_model_serializers'
 gem 'typedjq-rails'
 gem 'jquery-rails'
-
+gem 'cocoon', '~> 1.2', '>= 1.2.11'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

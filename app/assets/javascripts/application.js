@@ -18,6 +18,7 @@
 //= require lib/typed-implementation
 //= require turbolinks
 //= require recipes
+//= require cocoon
 //= require_tree .
 
 $ (function () {

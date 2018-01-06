@@ -29,8 +29,7 @@ class RecipesController < ApplicationController
 		def new
 			if user_signed_in?
 				@recipe = Recipe.new
-				5.times {@recipe.recipe_ingredients.build.build_ingredient}
-				5.times  {@recipe.directions.build}
+				
 			else 
 				redirect_to  new_user_session_path
 	  	end
@@ -41,15 +40,13 @@ class RecipesController < ApplicationController
 			if @recipe.save
 				redirect_to recipe_path(@recipe) , notice: "Successfully created new recipe"
 			else
-				5.times {@recipe.recipe_ingredients.build.build_ingredient}
-		    5.times  {@recipe.directions.build}
+				
 				render 'new'
 			end
 		end
 		
 		def edit
-     5.times { @recipe.recipe_ingredients.build.build_ingredient}
-     5.times { @recipe.directions.build}
+   
 		end
 	
 		def update

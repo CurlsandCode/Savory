@@ -9,8 +9,8 @@ class Recipe < ApplicationRecord
 	validates :name, uniqueness: true
   validates :recipe_ingredients, presence: true
 	validates :directions, presence: true
-	accepts_nested_attributes_for :recipe_ingredients, :reject_if => proc { |attr| attr[:quantity].blank? && attr[:ingredient_attributes][:name].blank? }
-  accepts_nested_attributes_for :directions, :reject_if => proc { |attr| attr[:step].blank?}
+	accepts_nested_attributes_for :recipe_ingredients, :reject_if => proc { |attr| attr[:quantity].blank? && attr[:ingredient_attributes][:name].blank? }, allow_destroy: true
+  accepts_nested_attributes_for :directions, :reject_if => proc { |attr| attr[:step].blank?}, allow_destroy: true
 	
 	has_attached_file :image, styles: { :medium => "400x400#"}
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
