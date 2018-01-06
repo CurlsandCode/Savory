@@ -20,4 +20,6 @@
 //= require recipes
 //= require_tree .
 
-
+$ (function () {
+AOS.init ();
+});
