@@ -12,8 +12,12 @@
 //
 //= require jquery
 //= require bootstrap-sprockets
+//= require jquery_ujs
 //= require rails-ujs
+//= require lib/typed
+//= require lib/typed-implementation
 //= require turbolinks
 //= require recipes
 //= require_tree .
+
 
