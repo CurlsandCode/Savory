@@ -4,33 +4,31 @@
 <div class="banner home-banner">
   <div class="banner-content">
     <h1>SAVORY</h1>
-    <p><span id="intro"></span></p>
-    <%= link_to "Add Your Own Recipe", new_recipe_path, class: "btn btn-primary btn-lg my-btn"%>
+     <p><span id="intro"></span></p>
+     <%= link_to "Add Your Own Recipe", new_recipe_path, class: "btn btn-primary btn-lg my-btn"%>
   </div>
 </div>
  <h2 class="text-center title">Latest Recipes</h2>
   <%= render "latest_recipes", recipe: @recipe %>
     <br />
-<div class="container">
-  <h2 class="text-center title">Our Library of Recipes</h2>
-  <div class="row">
+ <div class="container">
+   <h2 class="text-center title">Our Library of Recipes</h2>
+   <div class="row">
     <% @recipes.each do |recipe| %>
     <div class="col-xs-12 col-sm-4">
       <div data-aos="flip-left"
-     data-aos-easing="ease-out-cubic"
-     data-aos-duration="2000">
+        data-aos-easing="ease-out-cubic"
+        data-aos-duration="2000">
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= recipe.image if recipe.image.present? %>');">
-         
-          <div class="card-description">
-            <h2><%= recipe.name %></h2>
-             <p> <%= recipe.description %> </p>
+         <div class="card-description">
+            <h2><%= link_to recipe.name, recipe_path(recipe)%></h2>
+             <p id="description-<%= recipe.id %>"> <%= truncate(recipe.description, length:25)%></p>
+              <a href="#" class="js-more btn btn-default btn-sm" data-id="<%= recipe.id %>">Read more<span class=" glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
           </div>
-        <%= link_to '', recipe_path(recipe), class: "card-link" %>
         </div>
       </div>
-  </div>
+    </div>
   <% end %>
-
-</div>
+  </div>
 </div>
 <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>

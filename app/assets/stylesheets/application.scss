@@ -70,10 +70,12 @@ rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), asset-url('banner.jpg');
 }
 
 
-a {
-    
+a, a:hover {
     text-decoration: none;
+	  color: white;
 }
+
+
 
 #recipe-ingredients, #directions {
 	margin-bottom: 50px;
