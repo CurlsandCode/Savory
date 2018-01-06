@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       end
 			resources :comments, only: [:create, :destroy]
 		end
-	 root to: "home#index"
+	 root to: "recipes#index"
 	
 	  resources :users do
 		resources :recipes
