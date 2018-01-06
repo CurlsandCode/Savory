@@ -23,6 +23,9 @@ gem 'omniauth-facebook'
 gem 'dotenv-rails'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'active_model_serializers'
+gem 'typedjq-rails'
+gem 'jquery-rails'
+
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
