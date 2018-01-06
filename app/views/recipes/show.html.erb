@@ -1,91 +1,76 @@
-
-
 <div class="banner recipe-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-url('<%=  @recipe.image.url %>')">
-<div class="banner-content">
-  <h1><%= @recipe.name %></h1>
-</div>
+	url('<%=  @recipe.image.url %>')">
+	<div class="banner-content">
+  	<h1><%= @recipe.name %></h1>
+	</div>
 </div>
 
-<div class="container">
-  <div class="row">
-
-    <div class="details-recipe">
-      <div class="col-xs-4">
-        <h4>Description</h4>
-        <p><%= @recipe.description %></p>
+	<div class="container">
+  	<div class="row">
+     <div class="details-recipe">
+      <div class="col-md-4">
+        	<h4>Description</h4>
+        	<p><%= @recipe.description %></p>
+        <div class="chefName"><strong>Created by: Chef <%= link_to @recipe.user.username, user_recipes_path(@recipe.user) %></strong></div> 
       </div>
-
-      <div class="col-xs-4">
+    
+      <div class="col-md-4">
         <h4>Ingredients</h4>
          <% @recipe.recipe_ingredients.each do |ri| %>
           <ul>
-          <li class="recipeIngredients"><%= ri.quantity %> of <%= ri.ingredient.name %> </li> 
+          	<li class="recipeIngredients"><%= ri.quantity %> of <%= ri.ingredient.name %> </li> 
           </ul>
-        <%end %> 
+        <% end %> 
       </div>
       
-  
-      <div class="col-xs-4">
+      <div class="col-md-4">
         <h4>Directions:</h4>
-        <% @recipe.directions.each do |d| %>
+        	<% @recipe.directions.each do |d| %>
           <ul>
-         <li class="recipeSteps"><%= d.step %></li>
-         <% end %>
+         		<li class="recipeSteps"><%= d.step %></li>
+          <% end %>
          </ul>
       </div>
     </div>
-
   </div>
 </div>
-  <br>
- <button type="button" class="btn btn-default">
+<br>
+	
+ 	<button type="button" class="btn btn-default">
     <%= link_to 'Back', recipes_path %>
- </button>
-<% if @recipe.user == current_user %>
-    <button type="button" class="btn btn-default">
+   </button>
+	<% if @recipe.user == current_user %>
+   <button type="button" class="btn btn-default">
     <%= link_to 'Edit',  edit_recipe_path %>
     </button>
      <button type="button" class="btn btn-default">
-    <%= link_to 'Delete', recipe_path, method: :delete, data:{confirm: "Are you sure?"} %>
+    	<%= link_to 'Delete', recipe_path, method: :delete, data:{confirm: "Are you sure?"} %>
      </button>
-<% end %>
-   <button class="js-next btn btn-default" data-id="<%= @recipe.id %>">Next Recipe</button> 
-<br />
-   
-             <h3 class="text-primary"><%= @recipe.comments.count %> Comment(s)</h3>
-                <hr/>      
-               <% @recipe.comments.each do |comment| %>
-      
-              <div class="comments-list"  >
-  <div class="container bootstrap snippet">
-    <div class="row">
-		<div class="col-md-12">
-		    <div class="recipe-comment">
-		    <ul class="comments">
-				<li class="clearfix">
-				  <div class="recipe-comments">
-				      <p class="meta"><small><%= time_ago_in_words(comment.created_at) %> ago</small> <%= comment.user.username %> said :</p>
-				      <p>
-				        <%= comment.body %>
-				      </p>
-				        
-				      <%= link_to 'Delete Comment',recipe_comment_path(@recipe, comment), method: :delete,
-              data: { confirm: 'Are you sure?' }, class:'btn btn-danger pull-right' %> 
-				      <hr/>
-				    </div>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</div>
-<% end %>  
-   
-   
-    
-    
-<% if current_user %>
+	<% end %>
+	 <%= render "votes", recipe: @recipe %>
+ <br />
+ 
+ <div class="row">
+  <div class="well-white">
+    <h2><%= @recipe.comments.count %> Comment(s)</h2>
+    	<hr>
+    <div id="comment">
+      <% if !@recipe.comments.empty? %>
+        <% @recipe.comments.each do |comment| %>
+        <blockquote>
+         <p class="comment_by">
+          <%= comment.user.username %>
+           commented <%= time_ago_in_words(comment.created_at) %> ago:
+            <%= comment.body %>
+             <span ><%= link_to '',recipe_comment_path(@recipe, comment), method: :delete,
+              data: { confirm: 'Are you sure?' }, class: 'glyphicon glyphicon-trash' %> </span>
+          </p>
+        </blockquote>
+        <% end %>
+      <% end %>
+    </div>
+
+   <% if current_user %>
      <br />
       <h4>Add a comment:</h4>
         <%= form_for @comment, url: recipe_comments_path(@recipe, @comment)  do |f| %>
@@ -107,4 +92,5 @@ url('<%=  @recipe.image.url %>')">
       <p>Please log in order to add a comment.</p>
     <% end %>
     
-   
+ 
+
