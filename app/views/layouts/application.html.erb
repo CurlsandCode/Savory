@@ -11,10 +11,12 @@
   </head>
 
   <body>
+    	 <div id="main_content" class="container">
      	 <%= render "layouts/nav" %>
-   <div id="main_content" class="container">
-		 <%= render "layouts/flash" %>
+       <%= render "layouts/flash" %>
+       <div id="app-container">
     <%= yield %>
+    </div>
 		</div>
   </body>
 </html>
