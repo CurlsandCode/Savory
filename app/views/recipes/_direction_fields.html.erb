@@ -1,5 +1,7 @@
-<div class="direction form-group">
+<div class="form-inline clearfix"> 
+	<div class="nested-fields">
 		<%= f.label :step, "Step:" %>
 		<%= f.text_field :step, class: 'form-control' %>
-		<%= link_to_remove_association "remove", f %>
+		 <%= link_to_remove_association "Remove", f, class: "btn btn-default form-button" %>
+	</div>
 	</div>

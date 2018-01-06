@@ -11,43 +11,46 @@
 			</div>
 	<% end %>
 
-	<div class="field">
+	<div class="panel-body">
 		<%= f.label :name, "Recipe Name" %>
-		<%= f.text_field :name %>
-	</div>
-	
-	<div class= "field">
-		<%= f.label :description, "Description" %>
-		<%= f.text_area :description %>
-	</div>
-	
-	<%= f.file_field :image %> <br>
-	<fieldset id="recipe-ingredients">
-	<ol>
-	<h3>Ingredients</h3>
-		<%= f.fields_for(:recipe_ingredients) do |ri| %>
-	  <%= render 'recipe_ingredient_fields', f: ri %>
-	  <% end %>
-	  
-	 <%= link_to_add_association 'add ingredient', f, :recipe_ingredients,
-    'data-association-insertion-node' => "#recipe-ingredients ol",
-    'data-association-insertion-method' => "append",
-    :wrap_object => Proc.new {|ri| ri.build_ingredient; ri } %>
-    </ol>
-    </fieldset>
-    
-	<h3>Directions</h3>
-		<%= f.fields_for(:directions) do |direction| %>
-	  <%= render 'direction_fields', f: direction %>
-	  <% end %>
-	  <div>
-    <%= link_to_add_association 'Add Step', f, :directions %>
-    </div>
-	<br />
-	
-	<%= f.hidden_field(:user_id, value: current_user.id) %>
+		<%= f.text_field :name, class: 'form-control'%>
 
-	<div class="actions">
-		<%= f.submit %>
-	</div>
-	<% end %>
+		<%= f.label :description, "Description" %>
+		<%= f.text_area :description, class: 'form-control'%> <br>
+		<%= f.file_field :image, class: 'form-control'%> <br>
+		
+		
+	<div class="row">
+   <div class="col-md-6">
+	  <div id="recipe-ingredients">
+	   <ol>
+	    <h3>Ingredients</h3>
+	      <%= f.fields_for(:recipe_ingredients) do |ri| %>
+	       <%= render 'recipe_ingredient_fields', f: ri  %>
+	      <% end %>
+	           <%= link_to_add_association 'Add Ingredient', f, :recipe_ingredients,
+               'data-association-insertion-node' => "#recipe-ingredients ol",
+                'data-association-insertion-method' => "append",
+                :wrap_object => Proc.new {|ri| ri.build_ingredient; ri }, class: "btn btn-default form-button" %>
+         </ol>
+        </div>
+       
+       <div class="col-md-6"> 
+        <div id="directions">
+	        <h3>Directions</h3>
+		       <%= f.fields_for(:directions) do |direction| %>
+	           <%= render 'direction_fields', f: direction %>
+	           <% end %>
+	           <%= link_to_add_association 'Add Step', f, :directions,
+               'data-association-insertion-node' => "#directions ",
+                'data-association-insertion-method' => "append", class: "btn btn-default form-button" %>
+             <br />
+	           <%= f.hidden_field(:user_id, value: current_user.id) %>
+		     </div>
+	     </div>
+     </div>
+   </div>
+  </div>
+<%= f.submit "Create Recipe", class: "btn btn-primary" %> 
+<% end %>
+	

@@ -74,6 +74,18 @@ a {
     
     text-decoration: none;
 }
+
+#recipe-ingredients, #directions {
+	margin-bottom: 50px;
+	ul, ol {
+		padding-left: 18px;
+		li {
+			padding: 1em 0;
+			border-bottom: 1px solid #EAEAEA;
+		}
+	}
+}
+
 .recipe-comment::before,
 .recipe-comment::after,
 .recipe-comment-form::before,
@@ -92,10 +104,6 @@ a {
 	list-style-type: none;
 	padding: 0;
 }
-
-
-
-
 
 .recipe-comment .recipe-comments{
 	border: 1px solid #eee;
