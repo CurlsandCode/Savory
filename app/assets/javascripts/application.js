@@ -16,7 +16,6 @@
 //= require rails-ujs
 //= require lib/typed
 //= require lib/typed-implementation
-//= require turbolinks
 //= require recipes
 //= require cocoon
 //= require_tree .
