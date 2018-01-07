@@ -1,7 +1,7 @@
 $(() => {
   bindClickHandlers()
 })
-
+//Link to user show page
 const bindClickHandlers = () => {
 	$('.user').on('click', function(event) {
     event.preventDefault()
@@ -67,4 +67,54 @@ User.prototype.formatShow = function() {
   `
   return userHtml
 }
-                            
+ //Comments
+
+// Load Comments
+$(() => {
+  $("a.load_comments").on("click", function(e){
+    $.get(this.href).success(function(json){
+      var $ol = $("div.comments ol")
+      $ol.html("")
+      json.forEach(function(comment){
+      $ol.append("<li>" + comment.body + "</li>");
+      })
+    })
+  e.preventDefault();
+  })
+});
+
+// Create Comment
+function Comment(comment) {
+  this.id = comment.id;
+  this.body = comment.body;
+  this.user = comment.user;
+}
+
+
+
+Comment.prototype.renderDisplay = function() {
+  var html = "" ;
+  html += '<blockquote>'+ "<div class=\'well-white well-white\' id=\'comment-\' + comment.id + '\'>" +  "<strong>" + this.user.username + "</strong>" + " commented: " + this.body + "</div>" + '</blockquote>';
+  $("#submitted-comments").append(html);
+}
+
+$(function() {
+  $("form#new_comment").on("submit", function(event) {
+    event.preventDefault();
+    var $form = $(this);
+    var action = $form.attr("action");
+    var params = $form.serialize();
+    $.ajax({
+      url: action,
+      data: params,
+      dataType: "json",
+      method: "POST"
+    })
+    .success(function(json) {
+      $(".commentBox").val("");
+      var comment = new Comment(json);
+      comment.renderDisplay();
+
+    })
+  })
+})

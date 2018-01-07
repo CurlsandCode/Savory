@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
      respond_to do |format|
       if @comment.save
         format.html { redirect_to @recipe, notice: 'Comment was successfully created.' }
-        format.json { render json: @comment, status: 201, location: @comment }
+        format.json { render json: @comment, status: 201}
       else
         format.html { redirect_to @recipe, notice: "You can't leave the comment box blank.Please try again!" }
         format.json { render json: @comment.errors, status:400 }

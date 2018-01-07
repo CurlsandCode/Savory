@@ -50,47 +50,32 @@
 	 <%= render "votes", recipe: @recipe %>
  <br />
  
- <div class="row">
+
+<div class="row">
   <div class="well-white">
     <h2><%= @recipe.comments.count %> Comment(s)</h2>
-    	<hr>
-    <div id="comment">
-      <% if !@recipe.comments.empty? %>
+      <hr>
+      <h4>Comments:</h4>
+       <div id="submitted-comments">
         <% @recipe.comments.each do |comment| %>
-        <blockquote>
-         <p class="comment_by">
-          <%= comment.user.username %>
-           commented <%= time_ago_in_words(comment.created_at) %> ago:
-            <%= comment.body %>
-             <span ><%= link_to '',recipe_comment_path(@recipe, comment), method: :delete,
+         <blockquote>
+         <div class="well-white well-white" id="comment-<%= comment.id %>">
+           <strong class="commentUserName"><%= comment.user.username %></strong> commented: <span class="commentContent"><%= comment.body %> </span> <span ><%= link_to '',recipe_comment_path(@recipe, comment), method: :delete,
               data: { confirm: 'Are you sure?' }, class: 'glyphicon glyphicon-trash' %> </span>
-          </p>
-        </blockquote>
-        <% end %>
+         </div>
+				</blockquote>
       <% end %>
     </div>
-
+   </div>
+  </div>
    <% if current_user %>
-     <br />
       <h4>Add a comment:</h4>
         <%= form_for @comment, url: recipe_comments_path(@recipe, @comment)  do |f| %>
-          <% if @comment.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
-
-          <ul>
-            <% @comment.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-           <%= f.text_area :body, class: 'commentBox form-control' %> <br />
-           <%= f.submit "Comment", class: "btn btn-primary" %> 
-        <% end %><br>
+           <p><%= f.text_area :body, class: 'commentBox form-control' %></p>
+          <button type="submit" class="btn btn-sm btn-primary">Create Comment</button>
+        <% end %>
+       <br>
     <% else %>
-      <p>Please log in order to add a comment.</p>
-    <% end %>
-    
+   <p>Please log in order to add a comment.</p>
+  <% end %>
  
-
