@@ -9,45 +9,20 @@
                         <h2> <%= @user.username.capitalize %></h2>
                         </div>
                             <hr>
+                             <p><%= @user.bio %></p>
                           <ul class="container details">
-                            <li><p><span class="glyphicon glyphicon-earphone one" style="width:50px;"></span>+91 90000 00000</p></li>
-                            <li><p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>somerandom@email.com</p></li>
-                            <li><p><span class="glyphicon glyphicon-map-marker one" style="width:50px;"></span>Hyderabad</p></li>
-                            <li><p><span class="glyphicon glyphicon-new-window one" style="width:50px;"></span><a href="#">www.example.com</p></a>
+                            <li><p><span class="glyphicon glyphicon-cutlery" style="width:50px;"></span><%= @user.recipes.count %> Recipes Added</p></li>
+                            <span><%= link_to "Edit Your Profile",  edit_user_registration_path(@user), class: "btn btn-sm btn-primary" %></span>
+                            <span><%= link_to "Delete Your Account", registration_path(@user), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-sm btn-default" %></span>
+                            <span><%= link_to "Add Recipe", new_user_recipe_path(@user), class: "btn btn-sm btn-primary" %></span>
                           </ul>
+                         </div>
                       </div>
-                  </div>
+                    </div>
                 </div>
  
 
- 
- 
- <h1>
-  <%= @user.username.capitalize %>
-  <%= image_tag @user.avatar.url (:medium) %>
-  <div class="user-editor">
-    
-      <%= link_to "Edit Your Profile", edit_user_path(@user), class: "btn btn-sm btn-primary" %>
-      <%= link_to "Delete Your Account", user_path(@user), method: :delete, class: "btn btn-sm btn-default" %>
-      <%= link_to "Add Recipe", new_user_recipe_path(@user), class: "btn btn-sm btn-primary" %>
-  
-  </div>
-</h1>
 
-<h2>Recipes</h2>
-<div class="recipes">
-  <ul>
-    <% @recipes.each do |recipe| %>
-      <%=  link_to recipe.name, user_recipe_path(recipe), class:"recipe-name" %>
-      <div class="recipe-editor">
-       
-          <%= link_to "Edit Recipe", edit_user_recipe_path(recipe), class: "btn btn-sm btn-primary" %>
-          <%= link_to "Delete Recipe", recipe_path(recipe), method: :delete, class: "btn btn-sm btn-default" %>
-        <% end %>
-      </div>
-   
-  </ul>
-</div>
 
 
   
