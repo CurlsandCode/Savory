@@ -1,9 +1,11 @@
 class CommentSerializer < ActiveModel::Serializer
-  attributes :id, :body, :created_at, :user
+  attributes :id, :body, :created_at
 	has_one :recipe
 	has_one :user
 	
-	def user
-		return object.user.username
+	
+	def created_at
+		return object.created_at.strftime("%d %b %y") 
 	end
 end
+
