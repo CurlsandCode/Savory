@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 			resources :comments, only: [:create, :destroy]
 		end
 	 root to: "recipes#index"
+	 get '/profile' => 'users#show'
 	
 	  resources :users do
 		resources :recipes

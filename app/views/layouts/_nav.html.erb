@@ -16,7 +16,15 @@
 		     <ul class="nav navbar-nav navbar-right">
 			  <li><%= link_to 'Recipes', root_path, class:'all_recipes' %></li>
 			  <li><%= link_to 'Add a new recipe', new_user_recipe_path(current_user) %></li>
-			  <li><%= link_to 'Account', edit_user_registration_path %></li>
+			  
+			  <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Account
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+			  <li><%= link_to "My Profile", user_path(current_user) %></li>
+			  <li><%= link_to ' Edit Account', edit_user_registration_path %></li>
+			   </ul>
+      </li>
 			  <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
 			</ul>
 		 	<% else %>
