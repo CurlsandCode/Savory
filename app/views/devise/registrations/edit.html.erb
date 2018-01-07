@@ -8,6 +8,7 @@
     <%= f.label :username %>
     <%= f.text_field :username, :autofocus => true %>
   </div>
+  
    <div class="field form-group">
     <%= f.label :avatar %>
     <%= f.file_field :avatar %><br>
@@ -17,7 +18,11 @@
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
-
+  
+    <div class="field">
+    <%= f.label :Bio %><br />
+    <%= f.text_area :bio, autofocus: true %>
+  </div>
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
