@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
  
 	def show
-   @user = User.find(params[:id])
+   @user = User.find_by(params[:id])
 		@recipes = @user.recipes
     respond_to do |f|
       f.html { render :show}

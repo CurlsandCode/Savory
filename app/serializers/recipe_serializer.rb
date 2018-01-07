@@ -5,6 +5,7 @@ class RecipeSerializer < ActiveModel::Serializer
 	has_many :recipe_ingredients
 	has_many :votes_for
 	belongs_to :user
+	
 	def image
 		return object.image.url(:medium)
 	end
