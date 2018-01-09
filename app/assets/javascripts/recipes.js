@@ -69,19 +69,6 @@ User.prototype.formatShow = function() {
 }
  //Comments
 
-// Load Comments
-$(() => {
-  $("a.load_comments").on("click", function(e){
-    $.get(this.href).success(function(json){
-      var $ol = $("div.comments ol")
-      $ol.html("")
-      json.forEach(function(comment){
-      $ol.append("<li>" + comment.body + "</li>");
-      })
-    })
-  e.preventDefault();
-  })
-});
 
 // Create Comment
 function Comment(comment) {
