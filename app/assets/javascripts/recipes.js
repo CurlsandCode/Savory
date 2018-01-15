@@ -57,7 +57,6 @@ User.prototype.formatShow = function() {
                           <ul class="container details">
                             <li><p><span class="glyphicon glyphicon-cutlery" style="width:50px;"></span>${this.recipes.length} Recipes Added</p></li>
                             <li class="lineup"><a href="/users/edit" data-id="${this.id}" class=" btn btn-primary btn-sm"> Edit Your Profile</a><br></li>
-                            <li class="lineup"><a href="#" data-id="${this.id}" data: { confirm: "Are you sure?" }, method: :delete, class=" btn btn-primary btn-sm"> Delete Your Profile</a><br></li>
                             <li class="lineup"><a href="/users/${this.id}/recipes/new " class=" btn btn-primary btn-sm"> Add Recipe</a><br></li>
                           </ul>
                          </div>

@@ -13,7 +13,6 @@
                           <ul class="container details">
                             <li><p><span class="glyphicon glyphicon-cutlery" style="width:50px;"></span><%= @user.recipes.count %> Recipes Added</p></li>
                             <span><%= link_to "Edit Your Profile",  edit_user_registration_path(@user), class: "btn btn-sm btn-primary" %></span>
-                            <span><%= link_to "Delete Your Account", registration_path(@user), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-sm btn-default" %></span>
                             <span><%= link_to "Add Recipe", new_user_recipe_path(@user), class: "btn btn-sm btn-primary" %></span>
                           </ul>
                          </div>
