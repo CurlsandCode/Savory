@@ -6,7 +6,7 @@ const bindClickHandlers = () => {
 	$('.user').on('click', function(event) {
     event.preventDefault()
      history.pushState(null, null, `/user/profile`)
-    fetch(`/user/profile.json`)
+    fetch(`/user/profile.json`, { credentials: 'same-origin' })
     .then(response => response.json())
     .then(user => {
       $('#app-container').html('')
