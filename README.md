@@ -1,15 +1,13 @@
 # Savory
 
-* Welcome to Savory. A basic webapp to keep track of your favorite recipes and find new ones. We are currently under construction!
-
-  Feel free to sign up, log in, and add new recipes.
+* Welcome to Savory.Savory is a recipe manager with a javascript front-end and a rails backend. Users can use this site to share their favorite recipes and learn about new ones.
+Feel free to sign up, log in, and add new recipes.
 
   ## Installation and Usage
 
   * Fork and clone this repository.
   * Execute bundle install.
   * Rake db:migrate
-  * Rake db:seed
   * Start a rails server.
   * Connect to the rails server with a browser.
   * From there you can log in to the application for full functionality or browse the data as a guest.
