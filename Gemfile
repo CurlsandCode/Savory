@@ -15,7 +15,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'devise', '~> 4.2'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
-gem 'paperclip', '~> 5.1'
+gem 'paperclip', '~> 5.2.1'
 gem 'aws-sdk', '~> 2.3'
 gem 'jquery-rails'
 gem 'omniauth'
@@ -24,7 +24,6 @@ gem 'dotenv-rails'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'active_model_serializers'
 gem 'typedjq-rails'
-gem 'jquery-rails'
 gem 'cocoon', '~> 1.2', '>= 1.2.11'
 
 group :development, :test do
@@ -42,7 +41,7 @@ group :development do
 end
 
 group :production do
-	gem 'pg'
+	gem 'pg', '~> 0.21'
 	gem 'rails_12factor'
 end
 
