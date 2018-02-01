@@ -18,7 +18,7 @@ const bindClickHandlers = () => {
  
 
 	// More Button on recipe index
-	$(document).on('click', ".js-more", function(event) {
+	$('.js-more').on('click', function(event) {
 		 event.preventDefault();
        let id = $(this).attr("data-id");
        $.get("/recipes/" + id + ".json", function(recipe) { 
