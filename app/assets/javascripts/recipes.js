@@ -22,12 +22,12 @@ const bindClickHandlers = () => {
 		 event.preventDefault();
        let id = $(this).attr("data-id");
        $.get("/recipes/" + id + ".json", function(recipe) { 
-      $("#description-" + id).html(recipe.description);
+      $("#description-" + id).text(recipe.description);
     });
   });
 };
 
-
+// Constructor function for User Object 
   function User(user) {
   this.id = user.id;
 	this.avatar = user.avatar;
@@ -69,7 +69,7 @@ User.prototype.formatShow = function() {
  //Comments
 
 
-// Create Comment
+// Constructor function for Comment Object 
 function Comment(comment) {
   this.id = comment.id;
   this.body = comment.body;
@@ -77,7 +77,7 @@ function Comment(comment) {
 }
 
 
-
+//method that appends the new comment to the DOM
 Comment.prototype.renderDisplay = function() {
   var html = "" ;
   html += '<blockquote>'+ "<div class=\'well-white well-white\' id=\'comment-\' + comment.id + '\'>" +  "<strong>" + this.user.username + "</strong>" + " commented: " + this.body + "</div>" + '</blockquote>';
