@@ -5,12 +5,13 @@ class RecipesController < ApplicationController
 				@recent_recipes = Recipe.recently_added_recipes
 			 if params[:user_id]
 				@recipes = User.find(params[:user_id]).recipes
-			 end
+			 else
 	 	   @recipes = Recipe.all.by_alphabet
 		   respond_to do |format|
 			 format.html {render :index}
 			 format.json {render json: @recipes}
 			 end
+			end
 		end
      
 
