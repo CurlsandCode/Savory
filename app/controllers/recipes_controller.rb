@@ -78,4 +78,4 @@ class RecipesController < ApplicationController
 				:ingredient_id,
 			ingredient_attributes: [:id, :name]])
 		end
-		
+end

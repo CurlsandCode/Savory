@@ -10,93 +10,91 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180107065239) do
-
-  create_table "comments", force: :cascade do |t|
-    t.text "body"
-    t.integer "recipe_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["recipe_id"], name: "index_comments_on_recipe_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
+ActiveRecord::Schema.define(version: 20_180_107_065_239) do
+  create_table 'comments', force: :cascade do |t|
+    t.text 'body'
+    t.integer 'recipe_id'
+    t.integer 'user_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['recipe_id'], name: 'index_comments_on_recipe_id'
+    t.index ['user_id'], name: 'index_comments_on_user_id'
   end
 
-  create_table "directions", force: :cascade do |t|
-    t.text "step"
-    t.integer "recipe_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'directions', force: :cascade do |t|
+    t.text 'step'
+    t.integer 'recipe_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "ingredients", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'ingredients', force: :cascade do |t|
+    t.string 'name'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "recipe_ingredients", force: :cascade do |t|
-    t.integer "recipe_id"
-    t.integer "ingredient_id"
-    t.string "quantity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'recipe_ingredients', force: :cascade do |t|
+    t.integer 'recipe_id'
+    t.integer 'ingredient_id'
+    t.string 'quantity'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "recipes", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
+  create_table 'recipes', force: :cascade do |t|
+    t.string 'name'
+    t.text 'description'
+    t.integer 'user_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'image_file_name'
+    t.string 'image_content_type'
+    t.integer 'image_file_size'
+    t.datetime 'image_updated_at'
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "username"
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip"
-    t.string "last_sign_in_ip"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "provider"
-    t.string "uid"
-    t.string "avatar_file_name"
-    t.string "avatar_content_type"
-    t.integer "avatar_file_size"
-    t.datetime "avatar_updated_at"
-    t.string "bio"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["provider"], name: "index_users_on_provider"
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["uid"], name: "index_users_on_uid"
-    t.index ["username"], name: "index_users_on_username", unique: true
+  create_table 'users', force: :cascade do |t|
+    t.string 'email', default: '', null: false
+    t.string 'encrypted_password', default: '', null: false
+    t.string 'username'
+    t.string 'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.integer 'sign_in_count', default: 0, null: false
+    t.datetime 'current_sign_in_at'
+    t.datetime 'last_sign_in_at'
+    t.string 'current_sign_in_ip'
+    t.string 'last_sign_in_ip'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'provider'
+    t.string 'uid'
+    t.string 'avatar_file_name'
+    t.string 'avatar_content_type'
+    t.integer 'avatar_file_size'
+    t.datetime 'avatar_updated_at'
+    t.string 'bio'
+    t.index ['email'], name: 'index_users_on_email', unique: true
+    t.index ['provider'], name: 'index_users_on_provider'
+    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
+    t.index ['uid'], name: 'index_users_on_uid'
+    t.index ['username'], name: 'index_users_on_username', unique: true
   end
 
-  create_table "votes", force: :cascade do |t|
-    t.string "votable_type"
-    t.integer "votable_id"
-    t.string "voter_type"
-    t.integer "voter_id"
-    t.boolean "vote_flag"
-    t.string "vote_scope"
-    t.integer "vote_weight"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
-    t.index ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id"
-    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
-    t.index ["voter_type", "voter_id"], name: "index_votes_on_voter_type_and_voter_id"
+  create_table 'votes', force: :cascade do |t|
+    t.string 'votable_type'
+    t.integer 'votable_id'
+    t.string 'voter_type'
+    t.integer 'voter_id'
+    t.boolean 'vote_flag'
+    t.string 'vote_scope'
+    t.integer 'vote_weight'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index %w[votable_id votable_type vote_scope], name: 'index_votes_on_votable_id_and_votable_type_and_vote_scope'
+    t.index %w[votable_type votable_id], name: 'index_votes_on_votable_type_and_votable_id'
+    t.index %w[voter_id voter_type vote_scope], name: 'index_votes_on_voter_id_and_voter_type_and_vote_scope'
+    t.index %w[voter_type voter_id], name: 'index_votes_on_voter_type_and_voter_id'
   end
-
 end

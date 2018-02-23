@@ -1,13 +1,12 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  def new
+    super
+  end
 
-    def new		    
-      super		      
-    end	
-	
-  	def edit
+  def edit
     render :edit
-    end
-  		  
+  end
+
   def update
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
     prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
@@ -17,25 +16,26 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if resource_updated
       if is_flashing_format?
         flash_key = update_needs_confirmation?(resource, prev_unconfirmed_email) ?
- +          :update_needs_confirmation : :updated
-         set_flash_message :notice, flash_key
+ + :update_needs_confirmation : :updated
+        set_flash_message :notice, flash_key
       end
-       bypass_sign_in resource, scope: resource_name
+      bypass_sign_in resource, scope: resource_name
       respond_with resource, location: after_update_path_for(resource)
     else
-       clean_up_passwords resource
-       respond_with resource
+      clean_up_passwords resource
+      respond_with resource
      end
    end
- 
-    protected		   
-    # Overwrite update_resource to let users to update their user without giving their password		
-    def update_resource(resource, params)		   		      resource.update_without_password(params)
-    end		   
-  		  
-   def configure_permitted_parameters
-     devise_parameter_sanitizer.permit(:account_update, keys: [ :username, :avatar, :bio])
-     devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
-   end
- 
-  end		  
+
+  protected
+
+  # Overwrite update_resource to let users to update their user without giving their password
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[username avatar bio])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
+  end
+  end

@@ -4,17 +4,16 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.create(comment_params)
     @comment.recipe = @recipe
-     respond_to do |format|
+    respond_to do |format|
       if @comment.save
         format.html { redirect_to @recipe, notice: 'Comment was successfully created.' }
-        format.json { render json: @comment, status: 201}
+        format.json { render json: @comment, status: 201 }
       else
         format.html { redirect_to @recipe, notice: "You can't leave the comment box blank.Please try again!" }
-        format.json { render json: @comment.errors, status:400 }
+        format.json { render json: @comment.errors, status: 400 }
       end
     end
   end
-
 
   def destroy
     @comment = @recipe.comments.find(params[:id])
