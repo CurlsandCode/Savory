@@ -12,6 +12,12 @@ Feel free to sign up and add new recipes.
   * Start a rails server.
   * Connect to the rails server with a browser.
   * From there you can log in to the application for full functionality or browse the data as a guest.
+	
+	If you go to https://savory-recipes.herokuapp.com/,
+	you can use the test login to play with the app:
+	username: pac
+	email: pac@email.com
+	password:password
 
   ## Contributing
 
